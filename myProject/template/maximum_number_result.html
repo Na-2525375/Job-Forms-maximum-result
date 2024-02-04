@@ -1,0 +1,15 @@
+{% include "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maximum Number Result</title>
+</head>
+<body>
+    <h1>Maximum Number: {{ max_number }}</h1>
+    <a href="{% url 'maximum_number' %}">Back to Form</a>
+</body>
+</html>
+{% endblock content %}

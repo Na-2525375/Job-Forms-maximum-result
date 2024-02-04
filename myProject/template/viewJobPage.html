@@ -1,0 +1,63 @@
+{% include "base.html" %}
+
+{% block content %}
+<head>
+
+<style>
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+    }
+    
+    .card {
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .card-header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .card-body {
+        padding: 20px;
+    }
+    
+    .card-text {
+        color: #555;
+    }
+    
+    .card-text strong {
+        color: #333;
+    }
+    
+</style>
+</head>
+    <div class="container">
+        {% for job in jobs %}
+            <div class="card mb-3">
+                <h3 class="card-header">{{ job.Job_Title }}</h3>
+                <div class="card-body">
+                    <p class="card-text"><strong>Job Description:</strong> {{ job.Job_Description }}</p>
+                    <p class="card-text"><strong>Requirements:</strong> {{ job.Job_Requirements }}</p>
+                    {% if user.user_type == 'jobseeker' %}
+                    <a href='{% url "jobapplyPage" job.id %}'>Apply</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
